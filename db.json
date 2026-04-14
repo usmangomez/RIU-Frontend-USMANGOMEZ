@@ -1,0 +1,9 @@
+{
+  "heroes": [
+    { "id": 1, "name": "Spiderman", "power": "Web-slinging", "publisher": "Marvel", "firstAppearance": 1962 },
+    { "id": 2, "name": "Superman", "power": "Super strength", "publisher": "DC", "firstAppearance": 1938 },
+    { "id": 3, "name": "Batman", "power": "Intelligence", "publisher": "DC", "firstAppearance": 1939 },
+    { "id": 4, "name": "Wonder Woman", "power": "Super strength", "publisher": "DC", "firstAppearance": 1941 },
+    { "id": 5, "name": "Iron Man", "power": "Powered armor", "publisher": "Marvel", "firstAppearance": 1963 }
+  ]
+}
