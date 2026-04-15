@@ -1,0 +1,14 @@
+<mat-card class="hero-card">
+  <img class="hero-card__img" [src]="defaultImg" [alt]="hero()?.name" />
+
+  <mat-card-content class="hero-card__content">
+    <h3 class="hero-card__name">{{ hero()?.name }}</h3>
+
+    <div class="hero-card__meta">
+      <span class="hero-card__badge">{{ hero()?.power }}</span>
+      <span class="hero-card__publisher">{{ hero()?.publisher }}</span>
+    </div>
+
+    <p class="hero-card__year">Since {{ hero()?.firstAppearance }}</p>
+  </mat-card-content>
+</mat-card>
