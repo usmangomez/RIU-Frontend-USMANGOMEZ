@@ -6,6 +6,37 @@
 // custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
 
+// ─── Color palette ───────────────────────────────────────────────────────────
+:root {
+  // Brand
+  --color-primary:        #1a1a2e;
+  --color-primary-light:  #16213e;
+  --color-accent:         #e94560;
+  --color-accent-hover:   #c73652;
+
+  // Neutrals
+  --color-surface:        #0f3460;
+  --color-surface-light:  #1a4a7a;
+  --color-background:     #0a0a1a;
+  --color-card:           #1a1a2e;
+
+  // Text
+  --color-text:           #f0f0f0;
+  --color-text-muted:     #a0a0b0;
+  --color-text-inverse:   #1a1a2e;
+
+  // Semantic
+  --color-success:        #4caf82;
+  --color-warning:        #f4a835;
+  --color-error:          #e94560;
+
+  // Borders & shadows
+  --color-border:         rgba(255, 255, 255, 0.08);
+  --shadow-card:          0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-accent:        0 0 20px rgba(233, 69, 96, 0.3);
+}
+// ─────────────────────────────────────────────────────────────────────────────
+
 html {
   @include mat.theme((
     color: (

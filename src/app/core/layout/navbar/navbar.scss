@@ -1,0 +1,11 @@
+.navbar {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+
+  padding: 1rem;
+
+  &__content {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+}
