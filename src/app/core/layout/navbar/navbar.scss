@@ -2,10 +2,10 @@
   background-color: var(--color-primary);
   color: var(--color-text);
 
-  padding: 1rem;
-
   &__content {
+    width: 100%;
     max-width: 1000px;
     margin: 0 auto;
+    padding: 1rem;
   }
 }
