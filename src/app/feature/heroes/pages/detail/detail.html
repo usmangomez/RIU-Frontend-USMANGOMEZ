@@ -1,4 +1,8 @@
 @if(!loading()) {
+  <ng-template #actionsTemplate>
+    <button mat-flat-button (click)="editHero()">Edit</button>
+  </ng-template>
+
   <div class="detail__card">
     <img class="detail__img" [src]="defaultImg" [alt]="hero()!.name" />
 

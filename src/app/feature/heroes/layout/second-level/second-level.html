@@ -1,8 +1,16 @@
 <div class="second-level">
-  @if(loading()) {
+  <div class="second-level__header">
+    <button mat-button class="second-level__header__back" (click)="goBack()">← Back</button>
+
+    <div class="second-level__header__actions">
+      @if (secondLevelService.actionsPortal()) {
+        <ng-template class="second-level__header__actions__content" [cdkPortalOutlet]="secondLevelService.actionsPortal()!"></ng-template>
+      }
+    </div>
+  </div>
+
+  @if (loading()) {
     <div class="second-level__loading">Loading...</div>
-  } @else {
-    <button mat-button class="second-level__back" (click)="goBack()">← Back</button>
   }
 
   <div class="second-level__content">

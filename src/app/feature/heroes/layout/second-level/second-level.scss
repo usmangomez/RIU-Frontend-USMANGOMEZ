@@ -5,8 +5,16 @@
     padding: 2rem;
   }
 
-  &__back {
-    color: var(--color-text-inverse) !important;
-    margin-bottom: 1.5rem;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+
+    &__back {
+      color: var(--color-text-inverse) !important;
+      margin-bottom: 1.5rem;
+    }
+
+    &__actions {
+    }
   }
 }

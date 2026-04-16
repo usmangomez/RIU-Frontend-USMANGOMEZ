@@ -38,7 +38,11 @@ export class HeroesApi {
     return this.http.get<Publisher[]>(`${this.apiUrl}/publishers`);
   }
 
-  postHero(body: Omit<Hero, 'id'>): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/heroes`, body);
+  postHero(body: Omit<Hero, 'id'>): Observable<Hero> {
+    return this.http.post<Hero>(`${this.apiUrl}/heroes`, body);
+  }
+
+  putHero(id: string, body: Omit<Hero, 'id'>): Observable<Hero> {
+    return this.http.put<Hero>(`${this.apiUrl}/heroes/${id}`, body);
   }
 }
