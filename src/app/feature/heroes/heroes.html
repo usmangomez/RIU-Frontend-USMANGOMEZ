@@ -1,25 +1,29 @@
-<div class="heroes">
-  <div class="heroes__top-tools">
-    <mat-form-field [formGroup]="form">
-      <mat-label>Search hero</mat-label>
-      <input matInput formControlName="search">
-    </mat-form-field>
-  </div>
+@if(loading()) {
+  <div class="heroes__loading">Loading...</div>
+} @else {
+  <div class="heroes">
+    <div class="heroes__top-tools">
+      <mat-form-field [formGroup]="form">
+        <mat-label>Search hero</mat-label>
+        <input matInput formControlName="search">
+      </mat-form-field>
+    </div>
 
-  <div class="heroes__content">
-    @for (hero of heroes(); track hero.id) {
-      <app-hero-card [hero]="hero" />
-    }
-  </div>
+    <div class="heroes__content">
+      @for (hero of heroes(); track hero.id) {
+        <app-hero-card [hero]="hero" (click)="handleClickHero(hero.id)" />
+      }
+    </div>
 
-  <div class="heroes__bottom-tools">
-    <mat-paginator
-      [length]="totalHeroItems()"
-      [pageSize]="10"
-      [pageSizeOptions]="[10, 20, 30]"
-      aria-label="Select page"
-      (page)="handlePaginatorChange($event)"
-    >
-    </mat-paginator>
+    <div class="heroes__bottom-tools">
+      <mat-paginator
+        [length]="totalHeroItems()"
+        [pageSize]="10"
+        [pageSizeOptions]="[10, 20, 30]"
+        aria-label="Select page"
+        (page)="handlePaginatorChange($event)"
+      >
+      </mat-paginator>
+    </div>
   </div>
-</div>
+}

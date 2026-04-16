@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 import { Observable } from 'rxjs';
-import { Hero, Paginated, Power, Publisher } from '../models';
+import { Hero, HeroDetail, Paginated, Power, Publisher } from '../models';
 
 @Injectable({
   providedIn: 'root',
@@ -11,10 +11,23 @@ export class HeroesApi {
   private readonly http = inject(HttpClient);
   private readonly apiUrl = environment.heroesApi;
 
-  getHeroes(name: string = '', page: number = 1, perPage: number = 10): Observable<Paginated<Hero[]>> {
-    let params = new HttpParams().set('_page', page).set('_per_page', perPage);
+  getHeroes(
+    name: string = '',
+    page: number = 1,
+    perPage: number = 10,
+  ): Observable<Paginated<HeroDetail>> {
+    let params = new HttpParams()
+      .set('_embed', 'power')
+      .append('_embed', 'publisher')
+      .set('_page', page)
+      .set('_per_page', perPage);
     if (name) params = params.set('name_contains', name);
-    return this.http.get<Paginated<Hero[]>>(`${this.apiUrl}/heroes`, { params });
+    return this.http.get<Paginated<HeroDetail>>(`${this.apiUrl}/heroes`, { params });
+  }
+
+  getHeroById(id: string): Observable<HeroDetail> {
+    const params = new HttpParams().set('_embed', 'power').append('_embed', 'publisher');
+    return this.http.get<HeroDetail>(`${this.apiUrl}/heroes/${id}`, { params });
   }
 
   getPowers(): Observable<Power[]> {

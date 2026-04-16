@@ -5,8 +5,8 @@
     <h3 class="hero-card__name">{{ hero()?.name }}</h3>
 
     <div class="hero-card__meta">
-      <span class="hero-card__badge">{{ hero()?.power }}</span>
-      <span class="hero-card__publisher">{{ hero()?.publisher }}</span>
+      <span class="hero-card__badge">{{ hero()?.power?.name }}</span>
+      <span class="hero-card__publisher">{{ hero()?.publisher?.name }}</span>
     </div>
 
     <p class="hero-card__year">Since {{ hero()?.firstAppearance }}</p>

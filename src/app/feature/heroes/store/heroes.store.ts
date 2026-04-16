@@ -15,6 +15,7 @@ import { HeroDetail, Power, Publisher } from '../models';
 
 interface HeroesState {
   heroes: HeroDetail[];
+  hero: HeroDetail | null;
   powers: Power[];
   publishers: Publisher[];
   currentPage: number;
@@ -26,6 +27,7 @@ interface HeroesState {
 
 const initialState: HeroesState = {
   heroes: [],
+  hero: null,
   powers: [],
   publishers: [],
   currentPage: 1,
@@ -38,13 +40,9 @@ const initialState: HeroesState = {
 export const HeroesStore = signalStore(
   { providedIn: 'root' },
   withState(initialState),
-  withComputed(({ currentPage, totalPages, powers, publishers }) => ({
+  withComputed(({ currentPage, totalPages }) => ({
     hasPrev: computed(() => currentPage() > 1),
     hasNext: computed(() => currentPage() < totalPages()),
-    powersMap: computed(() => new Map<number, Power>(powers().map((p) => [+p.id, p]))),
-    publishersMap: computed(
-      () => new Map<number, Publisher>(publishers().map((p) => [+p.id, p])),
-    ),
   })),
   withMethods((store, heroesApi = inject(HeroesApi)) => ({
     loadHeroes: rxMethod<{ name?: string; page?: number; perPage?: number }>(
@@ -54,14 +52,8 @@ export const HeroesStore = signalStore(
           heroesApi.getHeroes(name, page, perPage).pipe(
             tapResponse({
               next: (response) => {
-                const heroes: HeroDetail[] = (response.data as unknown as any[]).map((hero) => ({
-                  ...hero,
-                  power: store.powersMap().get(hero.powerId)?.name!,
-                  publisher: store.publishersMap().get(hero.publisherId)?.name!,
-                }));
-
                 patchState(store, {
-                  heroes,
+                  heroes: response.data,
                   currentPage: page,
                   totalPages: response.pages,
                   totalItems: response.items,
@@ -74,11 +66,27 @@ export const HeroesStore = signalStore(
         ),
       ),
     ),
-  })),
-  withMethods((store, heroesApi = inject(HeroesApi)) => ({
-    initialLoad: rxMethod<void>(
+    loadHeroById: rxMethod<{ id: string }>(
       pipe(
         tap(() => patchState(store, { loading: true, error: null })),
+        switchMap(({ id }) =>
+          heroesApi.getHeroById(id).pipe(
+            tapResponse({
+              next: (hero) => {
+                patchState(store, {
+                  hero,
+                  loading: false,
+                });
+              },
+              error: (err: Error) => patchState(store, { loading: false, error: err.message }),
+            }),
+          ),
+        ),
+      ),
+    ),
+    loadCatalogs: rxMethod<void>(
+      pipe(
+        tap(() => patchState(store, { error: null })),
         switchMap(() =>
           forkJoin({
             powers: heroesApi.getPowers(),
@@ -87,7 +95,6 @@ export const HeroesStore = signalStore(
             tapResponse({
               next: ({ powers, publishers }) => {
                 patchState(store, { powers, publishers });
-                store.loadHeroes({});
               },
               error: (err: Error) => patchState(store, { loading: false, error: err.message }),
             }),
@@ -96,9 +103,4 @@ export const HeroesStore = signalStore(
       ),
     ),
   })),
-  withHooks((store) => ({
-    onInit: () => {
-      store.initialLoad();
-    }
-  }))
 );

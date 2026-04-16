@@ -1,4 +1,10 @@
 .heroes {
+  &__loading {
+    color: var(--color-text-inverse);
+    text-align: center;
+    padding: 2rem;
+  }
+
   &__top-tools {
     display: flex;
     justify-content: flex-end;
