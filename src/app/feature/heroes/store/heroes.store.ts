@@ -47,11 +47,11 @@ export const HeroesStore = signalStore(
     ),
   })),
   withMethods((store, heroesApi = inject(HeroesApi)) => ({
-    loadHeroes: rxMethod<number>(
+    loadHeroes: rxMethod<{ name?: string; page?: number; perPage?: number }>(
       pipe(
         tap(() => patchState(store, { loading: true, error: null })),
-        switchMap((page) =>
-          heroesApi.getHeroes(page).pipe(
+        switchMap(({ name = '', page = 1, perPage = 10 }) =>
+          heroesApi.getHeroes(name, page, perPage).pipe(
             tapResponse({
               next: (response) => {
                 const heroes: HeroDetail[] = (response.data as unknown as any[]).map((hero) => ({
@@ -87,7 +87,7 @@ export const HeroesStore = signalStore(
             tapResponse({
               next: ({ powers, publishers }) => {
                 patchState(store, { powers, publishers });
-                store.loadHeroes(1);
+                store.loadHeroes({});
               },
               error: (err: Error) => patchState(store, { loading: false, error: err.message }),
             }),

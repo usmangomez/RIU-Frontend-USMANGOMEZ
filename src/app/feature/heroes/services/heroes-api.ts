@@ -11,8 +11,9 @@ export class HeroesApi {
   private readonly http = inject(HttpClient);
   private readonly apiUrl = environment.heroesApi;
 
-  getHeroes(page: number, perPage: number = 10): Observable<Paginated<Hero[]>> {
-    const params = new HttpParams().set('_page', page).set('_per_page', perPage);
+  getHeroes(name: string = '', page: number = 1, perPage: number = 10): Observable<Paginated<Hero[]>> {
+    let params = new HttpParams().set('_page', page).set('_per_page', perPage);
+    if (name) params = params.set('name_contains', name);
     return this.http.get<Paginated<Hero[]>>(`${this.apiUrl}/heroes`, { params });
   }
 

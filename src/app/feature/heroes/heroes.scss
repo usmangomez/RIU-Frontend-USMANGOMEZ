@@ -1,4 +1,15 @@
 .heroes {
+  &__top-tools {
+    display: flex;
+    justify-content: flex-end;
+
+    @media (max-width: 768px) {
+      mat-form-field {
+        width: 100%;
+      }
+    }
+  }
+
   &__content {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -11,5 +22,9 @@
     @media (max-width: 768px) {
       grid-template-columns: repeat(2, 1fr);
     }
+  }
+
+  &__bottom-tools {
+    margin-top: 1rem;
   }
 }
