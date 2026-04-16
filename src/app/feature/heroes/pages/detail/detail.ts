@@ -2,9 +2,12 @@ import { AfterViewInit, Component, computed, effect, inject, input, OnDestroy, T
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatDialog } from '@angular/material/dialog';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { HeroesStore } from '../../store/heroes.store';
 import { SecondLevelService } from '../../services/second-level-service';
+import { ConfirmDialog } from '../../../../shared/components/confirm-dialog/confirm-dialog';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-detail',
@@ -18,6 +21,7 @@ export class Detail implements AfterViewInit, OnDestroy {
   private readonly aRoute = inject(ActivatedRoute);
   private readonly secondLevelService = inject(SecondLevelService);
   private readonly vcr = inject(ViewContainerRef);
+  private readonly dialog = inject(MatDialog);
 
   @ViewChild('actionsTemplate', { static: true }) actionsTemplate!: TemplateRef<unknown>;
 
@@ -53,6 +57,12 @@ export class Detail implements AfterViewInit, OnDestroy {
   }
 
   protected RemoveHero(): void {
-    this.heroesStore.deleteHero({ id: this.id() });
+    const ref = this.dialog.open(ConfirmDialog, {
+      data: { message: `Are you sure you want to remove ${this.hero()?.name}?` },
+    });
+
+    ref.afterClosed().pipe(first()).subscribe((confirmed) => {
+      if (confirmed) this.heroesStore.deleteHero({ id: this.id() });
+    });
   }
 }

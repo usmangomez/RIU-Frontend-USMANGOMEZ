@@ -131,8 +131,8 @@ export const HeroesStore = signalStore(
               next: () => {
                 patchState(store, {
                   loading: false,
-                  heroes: store.heroes().filter((h) => h.id !== id),
                 });
+                store.loadHeroes({});
                 router.navigate(['/heroes']);
               },
               error: (err: Error) => patchState(store, { loading: false, error: err.message }),
