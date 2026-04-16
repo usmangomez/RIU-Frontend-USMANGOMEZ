@@ -6,10 +6,20 @@ import { MatSelect } from '@angular/material/select';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HeroesStore } from '../../store/heroes.store';
 import { Hero } from '../../models';
+import { ToUpperCase } from '../../../../core/directives/to-upper-case';
 
 @Component({
   selector: 'app-hero-form',
-  imports: [MatButton, MatFormField, MatInput, MatLabel, MatOption, MatSelect, ReactiveFormsModule],
+  imports: [
+    MatButton,
+    MatFormField,
+    MatInput,
+    MatLabel,
+    MatOption,
+    MatSelect,
+    ReactiveFormsModule,
+    ToUpperCase,
+  ],
   templateUrl: './hero-form.html',
   styleUrl: './hero-form.scss',
 })
