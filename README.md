@@ -1,59 +1,69 @@
-# RiuChallenge
+# Riu Challenge — Superheroes App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.23.
+A superheroes CRUD application built as a technical challenge. Browse, search, create, edit and delete heroes, each linked to a power and a publisher.
 
-## Development server
+## Tech stack
 
-To start a local development server, run:
+- **Angular 20** — standalone components, zoneless change detection, signal inputs/outputs
+- **NgRx Signals** — `signalStore` for global state management
+- **Angular Material** — UI components
+- **Angular CDK Portal** — projects child actions into the parent layout header
+- **json-server** — mock REST API (`db.json`)
+- **Karma + Jasmine** — unit tests (~88% coverage)
 
-```bash
-ng serve
-```
+## Features
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Hero list with name search (debounced) and pagination
+- Hero detail view with power and publisher info
+- Add / Edit hero via a shared reactive form
+- Delete hero with confirmation dialog
+- Loading indicator via HTTP interceptor (request counter)
+- `appToUpperCase` directive for input fields
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+## Getting started
 
 ```bash
-ng build
+npm install
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Run the app and the mock API together:
 
 ```bash
-ng test
+npm run dev
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+Or separately:
 
 ```bash
-ng e2e
+npm run start   # Angular dev server → http://localhost:4200
+npm run server  # json-server → http://localhost:3000
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Tests
 
-## Additional Resources
+```bash
+npm test               # watch mode
+npm run test:coverage  # single run with coverage report
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Coverage report is generated at `coverage/riu-challenge/index.html`.
+
+## Project structure
+
+```
+src/app/
+├── core/
+│   ├── directives/       # toUpperCase directive
+│   ├── interceptors/     # loading interceptor
+│   ├── layout/           # navbar, footer, main shell
+│   └── services/         # LoadingService
+├── feature/heroes/
+│   ├── components/       # HeroCard, HeroForm
+│   ├── layout/           # SecondLevel layout with portal outlet
+│   ├── models/           # Hero, HeroDetail, Power, Publisher, Paginated
+│   ├── pages/            # Heroes list, Detail, Add, Edit
+│   ├── services/         # HeroesApi, SecondLevelService
+│   └── store/            # HeroesStore (NgRx Signals)
+└── shared/
+    └── components/       # ConfirmDialog
+```
