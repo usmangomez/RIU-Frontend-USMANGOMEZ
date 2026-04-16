@@ -45,4 +45,8 @@ export class HeroesApi {
   putHero(id: string, body: Omit<Hero, 'id'>): Observable<Hero> {
     return this.http.put<Hero>(`${this.apiUrl}/heroes/${id}`, body);
   }
+
+  deleteHero(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/heroes/${id}`);
+  }
 }

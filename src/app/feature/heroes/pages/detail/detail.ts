@@ -51,4 +51,8 @@ export class Detail implements AfterViewInit, OnDestroy {
   protected editHero(): void {
     this.router.navigate(['edit'], { relativeTo: this.aRoute });
   }
+
+  protected RemoveHero(): void {
+    this.heroesStore.deleteHero({ id: this.id() });
+  }
 }

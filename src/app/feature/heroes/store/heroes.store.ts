@@ -122,6 +122,25 @@ export const HeroesStore = signalStore(
         ),
       ),
     ),
+    deleteHero: rxMethod<{ id: string }>(
+      pipe(
+        tap(() => patchState(store, { loading: true, error: null })),
+        switchMap(({ id }) =>
+          heroesApi.deleteHero(id).pipe(
+            tapResponse({
+              next: () => {
+                patchState(store, {
+                  loading: false,
+                  heroes: store.heroes().filter((h) => h.id !== id),
+                });
+                router.navigate(['/heroes']);
+              },
+              error: (err: Error) => patchState(store, { loading: false, error: err.message }),
+            }),
+          ),
+        ),
+      ),
+    ),
     updateHero: rxMethod<{ id: string; hero: Omit<Hero, 'id'> }>(
       pipe(
         tap(() => patchState(store, { loading: true, error: null })),
