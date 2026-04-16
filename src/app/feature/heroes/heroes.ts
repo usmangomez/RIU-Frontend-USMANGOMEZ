@@ -59,7 +59,7 @@ export class Heroes {
     });
   }
 
-  protected handleClickHero(id: number) {
+  protected handleClickHero(id: string) {
     this.router.navigate(['./', id], { relativeTo: this.aRoute }).then();
   }
 

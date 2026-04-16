@@ -36,6 +36,15 @@
     @media (max-width: 768px) {
       grid-template-columns: repeat(2, 1fr);
     }
+
+    &:has(#{&}__no-results) {
+      display: block;
+    }
+
+    &__no-results {
+      text-align: center;
+      padding: 1rem;
+    }
   }
 
   &__bottom-tools {

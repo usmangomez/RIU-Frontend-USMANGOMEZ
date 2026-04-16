@@ -2,10 +2,10 @@ import { Power } from './power.model';
 import { Publisher } from './publisher.model';
 
 export interface Hero {
-  id: number;
+  id: string;
   name: string;
-  powerId: number;
-  publisherId: number;
+  powerId: string;
+  publisherId: string;
   firstAppearance: number;
 }
 

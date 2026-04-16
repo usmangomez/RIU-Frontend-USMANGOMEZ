@@ -10,8 +10,9 @@ import {
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { tapResponse } from '@ngrx/operators';
 import { forkJoin, pipe, switchMap, tap } from 'rxjs';
+import { Router } from '@angular/router';
 import { HeroesApi } from '../services/heroes-api';
-import { HeroDetail, Power, Publisher } from '../models';
+import { Hero, HeroDetail, Power, Publisher } from '../models';
 
 interface HeroesState {
   heroes: HeroDetail[];
@@ -86,7 +87,7 @@ export const HeroesStore = signalStore(
     ),
     loadCatalogs: rxMethod<void>(
       pipe(
-        tap(() => patchState(store, { error: null })),
+        tap(() => patchState(store, { loading: true, error: null })),
         switchMap(() =>
           forkJoin({
             powers: heroesApi.getPowers(),
@@ -94,7 +95,26 @@ export const HeroesStore = signalStore(
           }).pipe(
             tapResponse({
               next: ({ powers, publishers }) => {
-                patchState(store, { powers, publishers });
+                patchState(store, { loading: false, powers, publishers });
+              },
+              error: (err: Error) => patchState(store, { loading: false, error: err.message }),
+            }),
+          ),
+        ),
+      ),
+    ),
+  })),
+  withMethods((store, heroesApi = inject(HeroesApi), router = inject(Router)) => ({
+    createHero: rxMethod<Omit<Hero, 'id'>>(
+      pipe(
+        tap(() => patchState(store, { loading: true, error: null })),
+        switchMap((hero) =>
+          heroesApi.postHero(hero).pipe(
+            tapResponse({
+              next: () => {
+                patchState(store, { loading: false });
+                store.loadHeroes({});
+                router.navigate(['/heroes']);
               },
               error: (err: Error) => patchState(store, { loading: false, error: err.message }),
             }),

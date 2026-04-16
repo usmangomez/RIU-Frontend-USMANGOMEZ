@@ -37,4 +37,8 @@ export class HeroesApi {
   getPublishers(): Observable<Publisher[]> {
     return this.http.get<Publisher[]>(`${this.apiUrl}/publishers`);
   }
+
+  postHero(body: Omit<Hero, 'id'>): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/heroes`, body);
+  }
 }

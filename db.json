@@ -1,48 +1,253 @@
 {
   "heroes": [
-    { "id": "1", "name": "Spider-Man", "powerId": "1", "publisherId": "1", "firstAppearance": 1962 },
-    { "id": "2", "name": "Superman", "powerId": "2", "publisherId": "2", "firstAppearance": 1938 },
-    { "id": "3", "name": "Batman", "powerId": "3", "publisherId": "2", "firstAppearance": 1939 },
-    { "id": "4", "name": "Wonder Woman", "powerId": "2", "publisherId": "2", "firstAppearance": 1941 },
-    { "id": "5", "name": "Iron Man", "powerId": "4", "publisherId": "1", "firstAppearance": 1963 },
-    { "id": "6", "name": "Thor", "powerId": "5", "publisherId": "1", "firstAppearance": 1962 },
-    { "id": "7", "name": "Hulk", "powerId": "6", "publisherId": "1", "firstAppearance": 1962 },
-    { "id": "8", "name": "Captain America", "powerId": "7", "publisherId": "1", "firstAppearance": 1941 },
-    { "id": "9", "name": "Black Widow", "powerId": "8", "publisherId": "1", "firstAppearance": 1964 },
-    { "id": "10", "name": "Wolverine", "powerId": "9", "publisherId": "1", "firstAppearance": 1974 },
-    { "id": "11", "name": "Doctor Strange", "powerId": "10", "publisherId": "1", "firstAppearance": 1963 },
-    { "id": "12", "name": "Black Panther", "powerId": "7", "publisherId": "1", "firstAppearance": 1966 },
-    { "id": "13", "name": "Flash", "powerId": "11", "publisherId": "2", "firstAppearance": 1940 },
-    { "id": "14", "name": "Aquaman", "powerId": "12", "publisherId": "2", "firstAppearance": 1941 },
-    { "id": "15", "name": "Green Lantern", "powerId": "13", "publisherId": "2", "firstAppearance": 1940 },
-    { "id": "16", "name": "Cyborg", "powerId": "14", "publisherId": "2", "firstAppearance": 1980 },
-    { "id": "17", "name": "Shazam", "powerId": "5", "publisherId": "2", "firstAppearance": 1939 },
-    { "id": "18", "name": "Spawn", "powerId": "15", "publisherId": "3", "firstAppearance": 1992 },
-    { "id": "19", "name": "Invincible", "powerId": "2", "publisherId": "4", "firstAppearance": 2003 },
-    { "id": "20", "name": "Ant-Man", "powerId": "16", "publisherId": "1", "firstAppearance": 1962 }
+    {
+      "id": "1",
+      "name": "Spider-Man",
+      "powerId": "1",
+      "publisherId": "1",
+      "firstAppearance": 1962
+    },
+    {
+      "id": "2",
+      "name": "Superman",
+      "powerId": "2",
+      "publisherId": "2",
+      "firstAppearance": 1938
+    },
+    {
+      "id": "3",
+      "name": "Batman",
+      "powerId": "3",
+      "publisherId": "2",
+      "firstAppearance": 1939
+    },
+    {
+      "id": "4",
+      "name": "Wonder Woman",
+      "powerId": "2",
+      "publisherId": "2",
+      "firstAppearance": 1941
+    },
+    {
+      "id": "5",
+      "name": "Iron Man",
+      "powerId": "4",
+      "publisherId": "1",
+      "firstAppearance": 1963
+    },
+    {
+      "id": "6",
+      "name": "Thor",
+      "powerId": "5",
+      "publisherId": "1",
+      "firstAppearance": 1962
+    },
+    {
+      "id": "7",
+      "name": "Hulk",
+      "powerId": "6",
+      "publisherId": "1",
+      "firstAppearance": 1962
+    },
+    {
+      "id": "8",
+      "name": "Captain America",
+      "powerId": "7",
+      "publisherId": "1",
+      "firstAppearance": 1941
+    },
+    {
+      "id": "9",
+      "name": "Black Widow",
+      "powerId": "8",
+      "publisherId": "1",
+      "firstAppearance": 1964
+    },
+    {
+      "id": "10",
+      "name": "Wolverine",
+      "powerId": "9",
+      "publisherId": "1",
+      "firstAppearance": 1974
+    },
+    {
+      "id": "11",
+      "name": "Doctor Strange",
+      "powerId": "10",
+      "publisherId": "1",
+      "firstAppearance": 1963
+    },
+    {
+      "id": "12",
+      "name": "Black Panther",
+      "powerId": "7",
+      "publisherId": "1",
+      "firstAppearance": 1966
+    },
+    {
+      "id": "13",
+      "name": "Flash",
+      "powerId": "11",
+      "publisherId": "2",
+      "firstAppearance": 1940
+    },
+    {
+      "id": "14",
+      "name": "Aquaman",
+      "powerId": "12",
+      "publisherId": "2",
+      "firstAppearance": 1941
+    },
+    {
+      "id": "15",
+      "name": "Green Lantern",
+      "powerId": "13",
+      "publisherId": "2",
+      "firstAppearance": 1940
+    },
+    {
+      "id": "16",
+      "name": "Cyborg",
+      "powerId": "14",
+      "publisherId": "2",
+      "firstAppearance": 1980
+    },
+    {
+      "id": "17",
+      "name": "Shazam",
+      "powerId": "5",
+      "publisherId": "2",
+      "firstAppearance": 1939
+    },
+    {
+      "id": "18",
+      "name": "Spawn",
+      "powerId": "15",
+      "publisherId": "3",
+      "firstAppearance": 1992
+    },
+    {
+      "id": "19",
+      "name": "Invincible",
+      "powerId": "2",
+      "publisherId": "4",
+      "firstAppearance": 2003
+    },
+    {
+      "id": "20",
+      "name": "Ant-Man",
+      "powerId": "16",
+      "publisherId": "1",
+      "firstAppearance": 1962
+    }
   ],
   "powers": [
-    { "id": "1", "name": "Web-slinging", "description": "Ability to shoot and swing on webs" },
-    { "id": "2", "name": "Super strength", "description": "Extraordinary physical strength beyond human limits" },
-    { "id": "3", "name": "Genius intellect", "description": "Peak human intelligence and master detective skills" },
-    { "id": "4", "name": "Powered armor", "description": "Advanced technological suit granting various abilities" },
-    { "id": "5", "name": "Divine power", "description": "God-like abilities derived from divine origin" },
-    { "id": "6", "name": "Gamma physiology", "description": "Unlimited strength fueled by rage via gamma radiation" },
-    { "id": "7", "name": "Enhanced physiology", "description": "Peak human or superhuman physical attributes" },
-    { "id": "8", "name": "Master combatant", "description": "Expert martial artist and spy trained in all forms of combat" },
-    { "id": "9", "name": "Regeneration", "description": "Accelerated healing factor and indestructible adamantium claws" },
-    { "id": "10", "name": "Sorcery", "description": "Mastery of the mystic arts and dimensional magic" },
-    { "id": "11", "name": "Super speed", "description": "Ability to move and think at superhuman speeds" },
-    { "id": "12", "name": "Hydrokinesis", "description": "Control over water and ability to breathe underwater" },
-    { "id": "13", "name": "Power ring", "description": "Will-powered ring capable of creating any construct imaginable" },
-    { "id": "14", "name": "Cybernetic enhancement", "description": "Half-human half-machine with advanced technology integrated into the body" },
-    { "id": "15", "name": "Necroplasm", "description": "Supernatural power derived from hellish energy" },
-    { "id": "16", "name": "Size manipulation", "description": "Ability to shrink or grow while retaining or amplifying strength" }
+    {
+      "id": "1",
+      "name": "Web-slinging",
+      "description": "Ability to shoot and swing on webs"
+    },
+    {
+      "id": "2",
+      "name": "Super strength",
+      "description": "Extraordinary physical strength beyond human limits"
+    },
+    {
+      "id": "3",
+      "name": "Genius intellect",
+      "description": "Peak human intelligence and master detective skills"
+    },
+    {
+      "id": "4",
+      "name": "Powered armor",
+      "description": "Advanced technological suit granting various abilities"
+    },
+    {
+      "id": "5",
+      "name": "Divine power",
+      "description": "God-like abilities derived from divine origin"
+    },
+    {
+      "id": "6",
+      "name": "Gamma physiology",
+      "description": "Unlimited strength fueled by rage via gamma radiation"
+    },
+    {
+      "id": "7",
+      "name": "Enhanced physiology",
+      "description": "Peak human or superhuman physical attributes"
+    },
+    {
+      "id": "8",
+      "name": "Master combatant",
+      "description": "Expert martial artist and spy trained in all forms of combat"
+    },
+    {
+      "id": "9",
+      "name": "Regeneration",
+      "description": "Accelerated healing factor and indestructible adamantium claws"
+    },
+    {
+      "id": "10",
+      "name": "Sorcery",
+      "description": "Mastery of the mystic arts and dimensional magic"
+    },
+    {
+      "id": "11",
+      "name": "Super speed",
+      "description": "Ability to move and think at superhuman speeds"
+    },
+    {
+      "id": "12",
+      "name": "Hydrokinesis",
+      "description": "Control over water and ability to breathe underwater"
+    },
+    {
+      "id": "13",
+      "name": "Power ring",
+      "description": "Will-powered ring capable of creating any construct imaginable"
+    },
+    {
+      "id": "14",
+      "name": "Cybernetic enhancement",
+      "description": "Half-human half-machine with advanced technology integrated into the body"
+    },
+    {
+      "id": "15",
+      "name": "Necroplasm",
+      "description": "Supernatural power derived from hellish energy"
+    },
+    {
+      "id": "16",
+      "name": "Size manipulation",
+      "description": "Ability to shrink or grow while retaining or amplifying strength"
+    }
   ],
   "publishers": [
-    { "id": "1", "name": "Marvel", "founded": 1939, "universe": "Marvel Universe" },
-    { "id": "2", "name": "DC", "founded": 1934, "universe": "DC Universe" },
-    { "id": "3", "name": "Image Comics", "founded": 1992, "universe": "Image Universe" },
-    { "id": "4", "name": "Skybound", "founded": 2010, "universe": "Invincible Universe" }
-  ]
+    {
+      "id": "1",
+      "name": "Marvel",
+      "founded": 1939,
+      "universe": "Marvel Universe"
+    },
+    {
+      "id": "2",
+      "name": "DC",
+      "founded": 1934,
+      "universe": "DC Universe"
+    },
+    {
+      "id": "3",
+      "name": "Image Comics",
+      "founded": 1992,
+      "universe": "Image Universe"
+    },
+    {
+      "id": "4",
+      "name": "Skybound",
+      "founded": 2010,
+      "universe": "Invincible Universe"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

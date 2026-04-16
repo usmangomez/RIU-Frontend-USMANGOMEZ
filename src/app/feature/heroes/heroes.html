@@ -1,4 +1,4 @@
-@if(loading()) {
+@if(loading() && heroes().length === 0) {
   <div class="heroes__loading">Loading...</div>
 } @else {
   <div class="heroes">
@@ -10,11 +10,17 @@
       </mat-form-field>
     </div>
 
-    <div class="heroes__content">
+    @if(loading() && heroes().length > 0) {
+      <div class="heroes__loading">Loading...</div>
+    } @else {<div class="heroes__content">
       @for (hero of heroes(); track hero.id) {
         <app-hero-card [hero]="hero" (click)="handleClickHero(hero.id)" />
+      } @empty {
+        <div class="heroes__content__no-results">No results found with: {{searchValue()}}</div>
       }
     </div>
+    }
+
 
     <div class="heroes__bottom-tools">
       <mat-paginator

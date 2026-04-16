@@ -1,5 +1,5 @@
 export interface Power {
-  id: number;
+  id: string;
   name: string;
   description: string;
 }
