@@ -12,8 +12,6 @@ import { HeroesStore } from '../../store/heroes.store';
 })
 export class Detail {
   private readonly heroesStore = inject(HeroesStore);
-  private readonly router = inject(Router);
-  private readonly aRoute = inject(ActivatedRoute);
 
   id = input<string>('-1');
 
@@ -31,9 +29,5 @@ export class Detail {
     effect(() => {
       if(!this.hero()) this.heroesStore.loadHeroById({ id: this.id() });
     });
-  }
-
-  goBack(): void {
-    this.router.navigate(['./..'], { relativeTo: this.aRoute }).then();
   }
 }

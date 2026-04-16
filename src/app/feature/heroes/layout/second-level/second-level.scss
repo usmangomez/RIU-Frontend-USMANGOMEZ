@@ -1,0 +1,12 @@
+.second-level {
+  &__loading {
+    color: var(--color-text-inverse);
+    text-align: center;
+    padding: 2rem;
+  }
+
+  &__back {
+    color: var(--color-text-inverse) !important;
+    margin-bottom: 1.5rem;
+  }
+}

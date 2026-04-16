@@ -3,6 +3,7 @@
 } @else {
   <div class="heroes">
     <div class="heroes__top-tools">
+      <button matButton="filled" (click)="handleAddHero()">Add hero</button>
       <mat-form-field [formGroup]="form">
         <mat-label>Search hero</mat-label>
         <input matInput formControlName="search">

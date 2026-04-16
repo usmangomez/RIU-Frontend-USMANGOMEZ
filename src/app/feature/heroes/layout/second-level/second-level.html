@@ -1,0 +1,11 @@
+<div class="second-level">
+  @if(loading()) {
+    <div class="second-level__loading">Loading...</div>
+  } @else {
+    <button mat-button class="second-level__back" (click)="goBack()">← Back</button>
+  }
+
+  <div class="second-level__content">
+    <router-outlet />
+  </div>
+</div>

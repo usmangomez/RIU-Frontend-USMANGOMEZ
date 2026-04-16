@@ -1,29 +1,23 @@
-@if (loading()) {
-  <div class="detail__loading">Loading...</div>
-} @else if (hero()) {
-  <div class="detail">
-    <button mat-button class="detail__back" (click)="goBack()">← Back</button>
+@if(!loading()) {
+  <div class="detail__card">
+    <img class="detail__img" [src]="defaultImg" [alt]="hero()!.name" />
 
-    <div class="detail__card">
-      <img class="detail__img" [src]="defaultImg" [alt]="hero()!.name" />
+    <div class="detail__info">
+      <h1 class="detail__name">{{ hero()!.name }}</h1>
+      <p class="detail__year">First appearance: <strong>{{ hero()!.firstAppearance }}</strong></p>
 
-      <div class="detail__info">
-        <h1 class="detail__name">{{ hero()!.name }}</h1>
-        <p class="detail__year">First appearance: <strong>{{ hero()!.firstAppearance }}</strong></p>
+      <div class="detail__section">
+        <span class="detail__label">Power</span>
+        <mat-chip-set>
+          <mat-chip>{{ hero()!.power?.name }}</mat-chip>
+        </mat-chip-set>
+        <p class="detail__description">{{ hero()!.power?.description }}</p>
+      </div>
 
-        <div class="detail__section">
-          <span class="detail__label">Power</span>
-          <mat-chip-set>
-            <mat-chip>{{ hero()!.power?.name }}</mat-chip>
-          </mat-chip-set>
-          <p class="detail__description">{{ hero()!.power?.description }}</p>
-        </div>
-
-        <div class="detail__section">
-          <span class="detail__label">Publisher</span>
-          <p class="detail__publisher">{{ hero()!.publisher?.name }}</p>
-          <p class="detail__description">{{ hero()!.publisher?.universe }} · Founded {{ hero()!.publisher?.founded }}</p>
-        </div>
+      <div class="detail__section">
+        <span class="detail__label">Publisher</span>
+        <p class="detail__publisher">{{ hero()!.publisher?.name }}</p>
+        <p class="detail__description">{{ hero()!.publisher?.universe }} · Founded {{ hero()!.publisher?.founded }}</p>
       </div>
     </div>
   </div>

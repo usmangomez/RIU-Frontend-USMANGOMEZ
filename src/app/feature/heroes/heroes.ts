@@ -7,10 +7,19 @@ import { debounceTime } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-heroes',
-  imports: [HeroCard, MatFormField, MatLabel, MatInput, ReactiveFormsModule, MatPaginator],
+  imports: [
+    HeroCard,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    ReactiveFormsModule,
+    MatPaginator,
+    MatButton,
+  ],
   templateUrl: './heroes.html',
   styleUrl: './heroes.scss',
 })
@@ -37,16 +46,24 @@ export class Heroes {
       this.heroesStore.loadHeroes({ name: name || '' });
     });
 
-    if(this.heroesStore.heroes().length === 0) {
+    if (this.heroesStore.heroes().length === 0) {
       this.heroesStore.loadHeroes({});
     }
   }
 
   protected handlePaginatorChange(paginator: PageEvent) {
-    this.heroesStore.loadHeroes({ name: this.searchValue() || '', page: paginator.pageIndex+1, perPage: paginator.pageSize });
+    this.heroesStore.loadHeroes({
+      name: this.searchValue() || '',
+      page: paginator.pageIndex + 1,
+      perPage: paginator.pageSize,
+    });
   }
 
   protected handleClickHero(id: number) {
-    this.router.navigate(['./', id], { relativeTo: this.aRoute}).then();
+    this.router.navigate(['./', id], { relativeTo: this.aRoute }).then();
+  }
+
+  protected handleAddHero() {
+    this.router.navigate(['./', 'add'], { relativeTo: this.aRoute }).then();
   }
 }
