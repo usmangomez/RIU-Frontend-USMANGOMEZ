@@ -130,7 +130,9 @@ export const HeroesStore = signalStore(
             tapResponse({
               next: () => {
                 patchState(store, { loading: false });
-                router.navigate(['/heroes']);
+                store.loadHeroById({id});
+                store.loadHeroes({});
+                router.navigate(['/heroes', id]);
               },
               error: (err: Error) => patchState(store, { loading: false, error: err.message }),
             }),

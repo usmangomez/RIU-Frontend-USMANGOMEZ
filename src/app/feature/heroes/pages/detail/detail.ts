@@ -23,14 +23,16 @@ export class Detail implements AfterViewInit, OnDestroy {
 
   id = input<string>('-1');
 
-  hero = computed(() =>
-    this.heroesStore.heroes().filter((hero) => hero.id === this.id())[0] ||
-    this.heroesStore.hero(),
+  hero = computed(
+    () =>
+      this.heroesStore.heroes().filter((hero) => hero.id === this.id())[0] ||
+      this.heroesStore.hero(),
   );
 
   loading = computed(() => this.heroesStore.loading());
 
-  defaultImg = 'https://img.freepik.com/free-vector/superhero-standing-front-sunburst_603843-1871.jpg';
+  defaultImg =
+    'https://img.freepik.com/free-vector/superhero-standing-front-sunburst_603843-1871.jpg';
 
   constructor() {
     effect(() => {

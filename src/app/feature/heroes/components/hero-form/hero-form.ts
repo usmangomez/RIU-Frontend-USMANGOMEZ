@@ -18,6 +18,7 @@ export class HeroForm {
   private readonly heroesStore = inject(HeroesStore);
 
   hero = input<Hero | null>(null);
+  buttonText = input<string>('Add Hero');
 
   powers = computed(() => this.heroesStore.powers());
   publishers = computed(() => this.heroesStore.publishers());
