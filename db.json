@@ -1,6 +1,13 @@
 {
   "heroes": [
     {
+      "id": "1",
+      "name": "Spider-Man",
+      "powerId": "1",
+      "publisherId": "1",
+      "firstAppearance": 1962
+    },
+    {
       "id": "2",
       "name": "Superman",
       "powerId": "2",
@@ -64,6 +71,20 @@
       "firstAppearance": 1974
     },
     {
+      "id": "11",
+      "name": "Doctor Strange",
+      "powerId": "10",
+      "publisherId": "1",
+      "firstAppearance": 1963
+    },
+    {
+      "id": "12",
+      "name": "Black Panther",
+      "powerId": "7",
+      "publisherId": "1",
+      "firstAppearance": 1966
+    },
+    {
       "id": "13",
       "name": "Flash",
       "powerId": "11",
@@ -111,6 +132,13 @@
       "powerId": "2",
       "publisherId": "4",
       "firstAppearance": 2003
+    },
+    {
+      "id": "20",
+      "name": "Ant-Man",
+      "powerId": "16",
+      "publisherId": "1",
+      "firstAppearance": 1962
     }
   ],
   "powers": [
